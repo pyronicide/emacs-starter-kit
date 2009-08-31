@@ -16,8 +16,7 @@
 (set-keyboard-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
 
-(setq visible-bell t
-      echo-keystrokes 0.1
+(setq echo-keystrokes 0.1
       font-lock-maximum-decoration t
       inhibit-startup-message t
       transient-mark-mode t
@@ -28,7 +27,7 @@
       uniquify-buffer-name-style 'forward
       whitespace-style '(trailing lines space-before-tab
                                   indentation space-after-tab)
-      whitespace-line-column 100
+      whitespace-line-column 80
       ediff-window-setup-function 'ediff-setup-windows-plain
       oddmuse-directory (concat dotfiles-dir "oddmuse")
       xterm-mouse-mode t
@@ -36,7 +35,7 @@
 
 ;; Set this to whatever browser you use
 ;; (setq browse-url-browser-function 'browse-url-firefox)
-;; (setq browse-url-browser-function 'browse-default-macosx-browser)
+(setq browse-url-browser-function 'browse-default-macosx-browser)
 ;; (setq browse-url-browser-function 'browse-default-windows-browser)
 ;; (setq browse-url-browser-function 'browse-default-kde)
 ;; (setq browse-url-browser-function 'browse-default-epiphany)
@@ -123,6 +122,8 @@
 (eval-after-load 'nxhtml
   '(eval-after-load 'zenburn
      '(set-face-background 'mumamo-background-chunk-submode "gray22")))
+
+;; 
 
 (provide 'starter-kit-misc)
 ;;; starter-kit-misc.el ends here
