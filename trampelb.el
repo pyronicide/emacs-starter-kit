@@ -31,10 +31,9 @@
 ;; Setup the color-theme to be taming-mr-arneson
 (add-to-list 'load-path (concat dotfiles-dir "/trampelb/color-theme" ))
 (require 'color-theme)
-(eval-after-load "color-theme"
-  '(progn
-     (color-theme-initialize)
-     (color-theme-taming-mr-arneson)))
+(color-theme-initialize)
+(setq color-theme-is-global t)
+(color-theme-taming-mr-arneson)
 
 ;; Functions
 (require 'line-num)
@@ -114,7 +113,18 @@
 
 (setq auto-fill-mode 1)
 
-;; Set the default window size to 80x71
-(setq default-frame-alist '(
-                (width . 80)
-                (height . 71) ))
+(add-to-list 'initial-frame-alist '(top . 0))
+(add-to-list 'initial-frame-alist '(left . 0))
+(add-to-list 'default-frame-alist '(height . 71))
+(add-to-list 'default-frame-alist '(width . 80))
+(add-to-list 'default-frame-alist '(top . 0))
+(add-to-list 'default-frame-alist '(left . 0))
+
+(scroll-bar-mode nil)
+
+;; I'd like emacsclient to take stdin.
+(defun fake-stdin-slurp (filename)
+  "Emulate stdin slurp using emacsclient hack"
+  (switch-to-buffer (generate-new-buffer "*stdin*"))
+  (insert-file filename)
+  (end-of-buffer))
