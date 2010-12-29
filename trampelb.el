@@ -81,6 +81,11 @@
         (setq show-trailing-whitespace t)
         (make-local-hook 'before-save-hook)
         (add-hook 'before-save-hook 'delete-trailing-whitespace)))
+(add-hook 'espresso-mode-hook
+    (lambda ()
+        (setq show-trailing-whitespace t)
+        (make-local-hook 'before-save-hook)
+        (add-hook 'before-save-hook 'delete-trailing-whitespace)))
 
 ;; ===== Turn off tab character =====
 
